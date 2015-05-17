@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="/lib/bower_components/angular/angular.js"></script>
+        <script src="/lib/bower_components/jquery/dist/jquery.js"></script>
+    </head>
+    <body>
+        Your name: <input id="test" type="text" ng-model="yourname" placeholder="World">
+        <hr>
+        Hello {{yourname || 'World'}}!
+        <span ng-bind='yourname'></span>
+        <section id="page1">1</section>
+        <section id="page2">2</section>
+        <section id="page3">3</section>
+        <section id="page4">4</section>
+        <section id="page5">5</section>
+        <section id="page6">6</section>
+    </body>
+</html>
