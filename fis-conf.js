@@ -299,6 +299,27 @@ var conf = {
                 to : "../../../spa/waimai/index.html"
             }
         ],
+        wedding: [{
+            //如果配置了receiver，fis会把文件逐个post到接收端上
+            receiver: 'http://www.wifimeishi.cn/wedding/receiver.php',
+            //从产出的结果的static目录下找文件
+            from: '/',
+            //上传目录从static下一级开始不包括static目录
+            subOnly: true,
+            //保存到远端机器的/home/fis/www/static目录下
+            //这个参数会跟随post请求一起发送
+//            to: '/alidata/www/wap/wedding',
+            to:'/',
+            //支持对文件进行字符串替换
+            // replace: {
+            //     from: /\/static\/v3\//g,
+            //     to: function() {
+            //         return '/browse_static/v3/'
+            //     }
+            // },
+            //某些后缀的文件不进行上传
+            exclude: /.*\.(?:svn|cvs|tar|rar|psd).*/
+        }],
         cp633: [{
             //如果配置了receiver，fis会把文件逐个post到接收端上
             receiver: 'http://cp01-rdqa-pool633.cp01.baidu.com:8088/receiver.php',

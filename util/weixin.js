@@ -1,12 +1,11 @@
 var weixin = {
-	_appId : 'wx49dbc6655b89326f',
 	init : function() {
 		this.getToken();
 	},
 	getToken : function() {
 		var me = this;
 		$.ajax({
-			url : "http://www.wifimeishi.cn/wedding/wxapi.php",
+			url : "http://www.wifimeishi.cn/wedding/jsticket.php",
 			dataType : "jsonp",
 			data : {
 				url : location.href.split('#')[0]
@@ -18,7 +17,7 @@ var weixin = {
 				    timestamp: data.timestamp, // 必填，生成签名的时间戳
 				    nonceStr: data.nonceStr, // 必填，生成签名的随机串
 				    signature: data.signature,// 必填，签名，见附录1
-				    jsApiList: ["startRecord"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				    jsApiList: ["startRecord"，"chooseImage"，"previewImage","uploadImage","downloadImage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 			}
 		});
@@ -26,7 +25,7 @@ var weixin = {
 	
 }
 wx.ready(function(){
-	console.log(123);
+	
 });
 wx.error(function(res){
 	console.log(res);
