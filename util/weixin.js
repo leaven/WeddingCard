@@ -17,19 +17,136 @@ var weixin = {
 				    timestamp: data.timestamp, // 必填，生成签名的时间戳
 				    nonceStr: data.nonceStr, // 必填，生成签名的随机串
 				    signature: data.signature,// 必填，签名，见附录1
-				    jsApiList: ["startRecord"，"chooseImage"，"previewImage","uploadImage","downloadImage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+				    jsApiList: [
+						'checkJsApi',
+				        'onMenuShareTimeline',
+				        'onMenuShareAppMessage',
+				        'onMenuShareQQ',
+				        'onMenuShareWeibo',
+				        'hideMenuItems',
+				        'showMenuItems',
+				        'hideAllNonBaseMenuItem',
+				        'showAllNonBaseMenuItem',
+				        'translateVoice',
+				        'startRecord',
+				        'stopRecord',
+				        'onRecordEnd',
+				        'playVoice',
+				        'pauseVoice',
+				        'stopVoice',
+				        'uploadVoice',
+				        'downloadVoice',
+				        'chooseImage',
+				        'previewImage',
+				        'uploadImage',
+				        'downloadImage',
+				        'getNetworkType',
+				        'openLocation',
+				        'getLocation',
+				        'hideOptionMenu',
+				        'showOptionMenu',
+				        'closeWindow',
+				        'scanQRCode',
+				        'chooseWXPay',
+				        'openProductSpecificView',
+				        'addCard',
+				        'chooseCard',
+				        'openCard'
+					] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 				});
 			}
 		});
 	}
 	
 }
-wx.ready(function(){
-	
-});
-wx.error(function(res){
-	console.log(res);
-    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-
-});
 weixin.init();
+wx.ready(function() {
+    var images = {
+        localId: [],
+        serverId: []
+      };
+	$("#checkApi").on("click", function() {
+		 wx.checkJsApi({
+	      jsApiList: [
+	        'chooseImage',
+	        'previewImage',
+			'uploadImage'
+	      ],
+	      success: function (res) {
+	        alert(JSON.stringify(res));
+	      }
+		});
+	});
+    $("#chooseImage").on("click", function() {
+        wx.chooseImage({
+          success: function (res) {
+            images.localId = res.localIds;
+			var str = '';
+			for(var i = 0 , len = res.localIds.length; i < len; i++) {
+				//str += '<img src="'+res.localIds[i]+'" />';
+				alert(res.localIds[i]);
+				$('body').append($('<img src="'+res.localIds[i] + '" />'));
+			}
+//			$(this).after(str)
+            alert('已选择 ' + res.localIds.length + ' 张图片');
+          }
+        });
+    });
+	$("#previewImage").on('click', function() {
+		wx.previewImage({
+	      current: 'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
+	      urls: [
+	        'http://img3.douban.com/view/photo/photo/public/p2152117150.jpg',
+	        'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
+	        'http://img3.douban.com/view/photo/photo/public/p2152134700.jpg'
+	      ]
+	    });
+	});
+	$("#uploadImage").on('click', function() {
+		if (images.localId.length == 0) {
+	      alert('请先使用 chooseImage 接口选择图片');
+	      return;
+	    }
+	    var i = 0, length = images.localId.length;
+	    images.serverId = [];
+	    function upload() {
+	      wx.uploadImage({
+	        localId: images.localId[i],
+	        success: function (res) {
+	          i++;
+	          alert('已上传：' + i + '/' + length);
+	          images.serverId.push(res.serverId);
+	          if (i < length) {
+	            upload();
+	          }
+	        },
+	        fail: function (res) {
+	          alert(JSON.stringify(res));
+	        }
+	      });
+	    }
+	    upload();
+	});
+	$("#downloadImage").on('click', function() {
+		if (images.serverId.length === 0) {
+	      alert('请先使用 uploadImage 上传图片');
+	      return;
+	    }
+	    var i = 0, length = images.serverId.length;
+	    images.localId = [];
+	    function download() {
+	      wx.downloadImage({
+	        serverId: images.serverId[i],
+	        success: function (res) {
+	          i++;
+	          alert('已下载：' + i + '/' + length);
+	          images.localId.push(res.localId);
+	          if (i < length) {
+	            download();
+	          }
+	        }
+	      });
+	    }
+	    download();
+		});
+});

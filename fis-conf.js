@@ -308,8 +308,8 @@ var conf = {
             subOnly: true,
             //保存到远端机器的/home/fis/www/static目录下
             //这个参数会跟随post请求一起发送
-//            to: '/alidata/www/wap/wedding',
-            to:'/',
+            to: '/alidata/www/wap/wedding/',
+            //to:'/',
             //支持对文件进行字符串替换
             // replace: {
             //     from: /\/static\/v3\//g,
