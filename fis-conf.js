@@ -192,11 +192,6 @@ var conf = {
         path : [
             // Widget
             //=========================================
-            {
-                reg: /^\/page\/(.*\.html)/i,
-                release : '$1',
-                useMap: true
-            },
             // {
             //     reg : /^\/lib\/jquery.js/,
             //     release : '/lib/jsjquery.js',
@@ -210,6 +205,11 @@ var conf = {
             //     isMod : true
             // },
             {
+                reg : /^\/static\/js\/main\.js/,
+                isMod : false,
+                useMap : true
+            },
+            {
                 reg : /^\/static\/(.*)\.js/,
                 isMod : true,
                 useMap : true
@@ -220,17 +220,12 @@ var conf = {
                 useMap : true
             },
             {
-                reg : /^\/static\/js\/.*js/,
-                isMod : true,
-                useMap : true
-            },
-            {
                 reg : /^\/src\/.*/,
                 release : false
             }
         ],
        // domain : "http://app.video.baidu.com/wisesearch/spa"
-        domain : "http://cp01-rdqa-pool633.cp01.baidu.com:8088/yb"
+        domain : "http://www.wifimeishi.cn/wedding"
         // domain : "http://app.video.baidu.com/spa/waimai"
         /**
          * 设置静态资源的域名前缀
@@ -292,11 +287,11 @@ var conf = {
         local: [
             {
                 from : '/',
-                to : "../../../spa/waimai/"
+                to : "../spa/wedding/"
             },
             {
                 from : '/page/index.html',
-                to : "../../../spa/waimai/index.html"
+                to : "../spa/index.html"
             }
         ],
         wedding: [{

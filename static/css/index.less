@@ -1,0 +1,36 @@
+body{
+	font-family : '黑体';
+}
+.page{
+	display:none;
+	.head{
+//		display: none;
+		position:relative;
+		top:0.5rem;
+		height:1.5rem;
+		.back{
+			display: block;
+			margin-top:0.25rem;
+			width:3.5rem;
+			height: 1rem;
+			background:url(/static/img/back.png) center 0 no-repeat;
+			background-size:0.5rem 100%;
+			position: absolute;
+			left:0;
+			top:0;
+			z-index:100;
+			text-indent: -9999px;
+		}
+		.title{
+			position: absolute;
+			left:0;
+			top:0;
+			display: block;
+			color:#875842;
+			font-size:0.9rem;
+			line-height: 1.5rem;
+			width:100%;
+			text-align: center;
+		}
+	}
+}

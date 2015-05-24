@@ -1,0 +1,89 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Language" content="zh-CN"/>
+	    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="description" content="婚礼请帖">
+        <link rel="stylesheet" type="text/css" href="/static/css/reset.less" />
+        <link rel="stylesheet" type="text/css" href="/static/css/index.less" />
+        <script src="/lib/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/lib/remResize.js"></script>
+    </head>
+    <body>
+        <!-- 首页 -->
+        <link rel="import" href="/page/page1/page1.html?__inline" />
+        <!-- 喜帖目录       -->
+        <link rel="import" href="/page/page2/page2.html?__inline" />
+        <!-- 编辑喜帖       -->
+        <link rel="import" href="/page/page3/page3.html?__inline" /> 
+        <!-- 上传照片       -->
+        <link rel="import" href="/page/page4/page4.html?__inline" />     
+        <script id="picListTpl" type="text/template">
+                     <% var imgSrc= data; %>
+                     <div class="pic-item">
+                        <img src="<%=imgSrc%>" />
+                     </div>
+        </script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="/util/weixin.js"></script>
+        <script src="/lib/tmpl.js"></script>
+        <script src="/lib/page.js"></script>
+        <script src="/static/js/main.js"></script>
+        <script>
+            wx.ready(function() {
+                $("#uploadPic").on("click", function() {
+                    wx.chooseImage({
+                      success: function (chRes) {
+                          
+                          var i = 0, 
+                              len = chRes.localIds.length,
+                              $picList = $("#picList");
+                          var img = {
+                              serverIds : []
+                          }
+                          upload();
+                          function upload() {
+                               
+                          //    setTimeout(function() {
+                                      wx.uploadImage({
+                                            localId: chRes.localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                                            success: function (upRes) {
+                                                $picList.append(tmpl('picListTpl', {data:chRes.localIds[i]}));
+                                                var serverId = upRes.serverId; // 返回图片的服务器端ID
+                                                img.serverIds.push(serverId);
+                                                $.ajax({
+                                                    url : 'http://www.wifimeishi.cn/wedding/postWeddingPhoto.php',
+                                                    method  : 'POST',
+                                                    data : {
+                                                        wx_media_id : serverId
+                                                    },
+                                                    jsonpCallback : 'postWeddingPhoto',
+                                                    success : function(data) {
+                                                        alert(data);
+                                                    }
+                                                });
+                                                i++;
+                                                if(i < len) {
+                                                    upload();
+                                                }
+                                               
+                                            },
+                                            fail: function (res) {
+                                	            alert(JSON.stringify(res));
+                                	        }
+                                        });
+                         //     },100);
+                          }
+                       
+                      }
+                     });
+                });
+            });
+            
+        </script>
+    </body>
+</html>

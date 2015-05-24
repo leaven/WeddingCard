@@ -84,7 +84,6 @@ wx.ready(function() {
 			var str = '';
 			for(var i = 0 , len = res.localIds.length; i < len; i++) {
 				//str += '<img src="'+res.localIds[i]+'" />';
-				alert(res.localIds[i]);
 				$('body').append($('<img src="'+res.localIds[i] + '" />'));
 			}
 //			$(this).after(str)
