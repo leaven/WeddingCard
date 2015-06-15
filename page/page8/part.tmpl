@@ -1,0 +1,19 @@
+<%for(var i = 0, len = data.length; i < len; i++) {%>
+<div class="part-item">
+	<div class="photo-menu" data-type_id="<%=data[i].type_id%>">
+		<input type="text" class="photo-title" value="<%=data[i].type_name%>" readonly>
+		<span class="photo-edit"></span>
+		<span class="photo-add"></span>
+	</div>
+	<% var length = data[i].imgs.length; %>
+	<div class="photo-list <%if(length > 0){ %>photo-list-high<%}%>">
+		<%for(var j = 0; j < length && j < 3; j++){%>
+		<div id="photoItem<%=j+1%>" class="photo-item">
+			<img src="<%=data[i].imgs[j].path%>">
+			<span class="photo-like"><%=data[i].imgs[j].likes%></span>
+			<span class="photo-look" data-pageswitch='{"currentPage": "page8","nextPage": "page14", "title": "<%=data[i].type_name%>","type_id": "<%=data[i].type_id%>", "refresh": true}'>查看相册</span>
+		</div>
+		<%}%>
+	</div>
+</div>
+<%}%>

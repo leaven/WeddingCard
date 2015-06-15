@@ -1,0 +1,17 @@
+<div id="wishes">
+    <%for(var i = 0, len = data.length; i < len; i++){%>
+    <div class="wish-item">
+        <div class="guset-menu clearfix">
+            <div class="guest-photo">
+                <img src="<%=data[i].headimgurl%>" alt="<%=data[i].nick_name%>">
+            </div>
+            <div class="guest-name">
+                <%=data[i].nickname%>的<b>&nbsp;祝福</b>
+            </div>
+        </div>
+        <%if(data[i].text !== ''){%>
+             <div class="wish-content"><%=data[i].text%></div>
+        <%}%>
+    </div>
+    <%}%>
+</div>

@@ -1,0 +1,26 @@
+<div id="weddingCardForm">
+    <input type="text" name="boyName" id="boyName" placeholder="男方姓名" value="<%=data.boys_name%>"/>
+    <input type="text" name="girlName" id="girlName" placeholder="女方姓名" value="<%=data.girls_name%>" />
+    <input type="text" name="weddingTime" id="weddingTime" placeholder="婚宴时间" value="<%=data.wedding_date%>" />
+    <input type="text" name="weddingHotel" id="weddingHotel" placeholder="婚宴酒店" value="<%=data.wedding_hotel%>" />
+    <input type="text" name="weddingPosition" id="weddingPosition" placeholder="婚宴地点" value="<%=data.wedding_location%>" />
+    <div class="wedding-card-text">
+        <p class="wedding-card-text-title">填写正文</p>
+        <textarea  name="weddingCardText" id="weddingCardText"><%=data.card%></textarea>
+    </div>
+    <div class="wedding-photos clearfix">
+        <div class="wedding-photo" data-photo-page="firstPage">
+            <div class="wedding-photo-img">
+                <img src="<%=data.pic_well.path%>">
+            </div>
+            <p class="wedding-photo-tip">显示在首页</p>
+        </div>
+        <div class="wedding-photo" data-photo-page="secondPage">
+            <div class="wedding-photo-img">
+                <img src="<%=data.pic_home.path%>">
+            </div>
+            <p class="wedding-photo-tip">显示在二级页</p>
+        </div>
+    </div>
+    <div id="weddingCardFormSubmit" data-submit="weddingCard" data-pageswitch='{"currentPage": "page3" , "nextPage": "page5"}'>提交</div>
+</div>

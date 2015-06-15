@@ -1,0 +1,58 @@
+#page10{
+	background:url(menu.png) 0 0 no-repeat;
+	background-size:100% 33rem;
+	.gift-menu-list{
+		margin:1.5rem 0.25rem 0 auto;;
+		box-sizing:border-box;
+		.gift-menu-item{
+			float:left;
+			box-sizing:border-box;
+			width:4.75rem;
+			margin-left:1rem;
+			img{
+				width:100%;
+				height:4.75rem;
+			}
+			.gift-menu-item-select{
+				width:100%;
+				height:2rem;
+				position:relative;
+				.select-item{
+					display:block;
+					position:absolute;
+					left:0;
+					top:0;
+					width:1rem;
+					height:2rem;
+					background:url(unselect.png) 0 center no-repeat;
+					background-size:100% 1rem;
+				}
+				.gift-menu-item-title{
+					display:block;
+					right:0;
+					top:0;
+					text-align:right;
+					font-size:0.8rem;
+					height: 2rem;
+					line-height: 2rem;
+				}
+			}
+		}
+		.gift-menu-item-selected{
+			.gift-menu-item-select{
+				.select-item{
+					background:url(selected.png) 0 center no-repeat;
+					background-size:100% 1rem;
+				}
+			}
+		}
+	}
+	.wish-gift-submit{
+		width:4rem;
+		height:1.4rem;
+		margin:1rem auto;
+		background:url(submit.png) 0 0 no-repeat;
+		background-size:100% 100%;
+		text-indent: -9999px;
+	}
+}

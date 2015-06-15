@@ -1,0 +1,6 @@
+<%for(var i = 0, len = data.length; i < len; i++){%>
+     <div class="gift-item" data-pageswitch='{"currentPage": "page7", "nextPage": "page13","title": "来自&nbsp;<%=data[i].nick_name%>&nbsp;的礼物","recv_id":"<%=data[i].recv_id%>","refresh":true}'>
+        <span class="gift-from">来自:<%=data[i].nick_name%></span>
+        <img class="gift-img" src="<%=data[i].imgs[0].img_url%>">
+     </div>
+<%}%>

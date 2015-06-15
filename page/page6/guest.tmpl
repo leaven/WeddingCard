@@ -1,0 +1,11 @@
+<div class="guest-list">
+<%for (var i = 0, len = data.length; i < len; i++) {%>
+	<div class="guest-item">
+		<span class="guest-name"><%=data[i].guest_name%></span>
+		<span class="guest-tel"><%=data[i].guest_tel%></span>
+		<span class="guest-num"><%=data[i].guest_count%></span>
+		<a class="guest-dialing" href="tel:<%=data[i].guest_tel%>">呼叫</a>
+		<span class="guest-position"><%=data[i].address%></span>
+	</div>
+<%}%>
+</div>

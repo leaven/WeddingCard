@@ -1,0 +1,8 @@
+<div class="message"><%=data[0].msg%></div>
+<div class="gift-list clearfix">
+    <%for(var i = 0, len = data[0].imgs.length; i < len; i++){ %>
+        <div class="gift-item">
+            <img src="<%=data[0].imgs[i].img_url%>">
+        </div>
+    <%}%>
+</div>

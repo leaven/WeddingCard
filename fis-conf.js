@@ -204,6 +204,11 @@ var conf = {
             //     id : 'jquery',
             //     isMod : true
             // },
+//            {
+//                reg : /^\/page\/\.js/i,
+//                isMod : true,
+//                useMap : true
+//            },
             {
                 reg : /^\/static\/js\/main\.js/,
                 isMod : false,
@@ -211,7 +216,7 @@ var conf = {
             },
             {
                 reg : /^\/static\/(.*)\.js/,
-                isMod : true,
+                isMod : false,
                 useMap : true
             },
             {
@@ -232,7 +237,7 @@ var conf = {
          * fis扩展了html、js、css的三种语言能力，并支持对资源的定位，定位包括 开发路径与发布路径的映射关系 以及 静态资源服务器域名设置。roadmap.domain节点就是用于控制该能力的配置。
          */
         //domain: 'http://vs5.bdstatic.com, http://vs6.bdstatic.com'
-    }, 
+    },
     settings: {
         /**
          * 插件的运行配置节点。
@@ -270,9 +275,8 @@ var conf = {
     },
     // 打包配置
     pack: {
-        "pkg/index.css" : [
-            "/static/**less",
-            "/widget/**less"
+        "pkg/page.css" : [
+            "/page/**less"
         ],
         "pkg/index.js" : [
             "/widget/**js/",

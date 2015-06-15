@@ -1,0 +1,73 @@
+#page6{
+	width:100%;
+	height:33rem;
+	background:url(bg.png) 0 2.5rem no-repeat;
+	background-size:100% 30rem;
+	.menu-guest{
+		color:rgb(235,125,65);
+		margin-top:1.9rem;
+		font-size: 0.8rem;
+		height: 1.25rem;
+		line-height: 1.25rem;
+		span{
+			display: inline-block;
+		}
+		.menu-name{
+			margin-left:1rem;
+			width:3.5rem;
+			text-align: center;
+		}
+		.menu-tel {
+			width:5.5rem;
+			text-align: center;
+		}
+		.menu-num{
+			width:5rem;
+			text-align: center;
+
+		}
+	}
+	.guest-list{
+		margin-top:1rem;
+		font-size:0.8rem;
+		.guest-item{
+			min-height: 3rem;
+		}
+		span{
+			display:inline-block;
+		}
+		.guest-name{
+			margin-left:1rem;
+			width:3.5rem;
+			text-indent: .2rem;
+		}
+		.guest-tel{
+			color:rgb(132,88,66);
+			width:5.5rem;
+			text-align: center;
+		}
+		.guest-num{
+			width:4rem;
+			text-align: center;
+		}
+		.guest-dialing{
+			display:inline-block;
+			width:2.5rem;
+			height: 1.3rem;
+			background:url(dial.png) 0 0 no-repeat;
+			background-size:100% 100%;
+			text-indent: -9999px;
+			&:focus{
+				background:url(dial-sel.png) 0 0 no-repeat;
+				background-size:100% 100%;
+			}	
+		}
+		.guest-position{
+			display:block;
+			margin-left:1.2rem;
+			width:100%;
+			color:rgb(56,165,180);
+			font-size:0.6rem;
+		}
+	}
+}

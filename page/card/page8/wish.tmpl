@@ -1,0 +1,10 @@
+<%for(var i = 0, len = data.length; i < len; i++){ %>
+    <div class="gift-like-item">
+        <div class="gift-like-item-pic">
+            <img src="<%=data[i].gift.img_url%>">
+            <span class="gift-like-bg">&nbsp;</span>
+            <span class="gift-like-title"><%=data[i].gift.name%></span>
+        </div>
+        <a class="gift-like-item-url" href="<%=data[i].gift.url%>">购买</a>
+    </div>
+<%}%>
