@@ -1,0 +1,41 @@
+#page14{
+    .message{
+        margin:5rem 1rem 0  1rem;
+        color:rgb(132,88,66);
+        font-size: .9rem;
+        line-height: 1.25rem;
+        text-align: center;
+        &:before,
+        &:after{
+            display: inline-block;
+            content: '';
+            width:1rem;
+            height:1rem;
+        }
+        &:before{
+            margin-right: .5rem;
+            background:url(left.png) 0 0 no-repeat;
+            background-size: 1rem 1rem;
+        }
+        &:after{
+            margin-left: .5rem;
+            transform:translateY(.4rem);
+            -webkit-transform:translateY(.4rem);
+            background:url(right.png) 0 0 no-repeat;
+            background-size: 1rem 1rem;
+        }
+    }
+    .gift-list{
+        margin:5rem 1rem 0 1rem;
+        .gift-item{
+            float:left;
+            width:33.33%;
+            box-sizing: border-box;
+            border:5px solid transparent;
+            img{
+                width:5.25rem;
+                height: 5.25rem;
+            }
+        }
+    }
+}

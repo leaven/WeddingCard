@@ -12,6 +12,12 @@
         <%if(data[i].text !== ''){%>
              <div class="wish-content"><%=data[i].text%></div>
         <%}%>
+        <%if (data[i].voice  && data[i].voice.wx_media_id){%>
+            <p class="clearfix">
+                <span class="voice-play voice-pause" data-voiceid="<%=data[i].voice.wx_media_id%>"></span>
+                <span class="voice-bar"></span>
+            </p>
+        <%}%>
     </div>
     <%}%>
 </div>

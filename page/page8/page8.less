@@ -52,59 +52,68 @@
 		}
 	}
 	.photo-list{
-		position:relative;
-		.photo-item{
-			position:absolute;
-			top:2rem;
-			width:18.275rem;
-			height:12.3rem;
-			background-color:#FFF;
-			img{
-				position: absolute;
-				width:17.775rem;
-				height:10rem;
-				left:.25rem;
-				top:.25rem;
-			}
-			.photo-like{
-				position:absolute;
-				display:block;
-				left:.9rem;
-				bottom:.5rem;
-				background:url(like.png) 0 0 no-repeat;
-				background-size:.85rem .75rem;
-				padding-left:1rem;
-				color:#919ba5;
-				font-size:.8rem;
-			}
-			.photo-look{
-				position:absolute;
-				display:block;
-				right:1rem;
-				bottom:.5rem;
-				color:#875842;
-				font-size:.9rem;
-			}
-		}
-		#photoItem1{
-			z-index:100;
-			transform:scale(1);
-			-webkit-transfrom:scale(1);
-		}
-		#photoItem2{
-			z-index:99;
-			top:.8rem;
-			transform:scale(0.9);
-			-webkit-transfrom:scale(0.9);
-		}
-		#photoItem3{
-			z-index:98;
-			top:-0.4rem;
-			transform:scale(0.8);
-			-webkit-transfrom:scale(0.8);
-		}
+		margin-top:1rem;
 	}
-	.photo-list-high{
-		height:13rem;
+	// .photo-list{
+	// 	position:relative;
+	// 	.photo-item{
+	// 		position:absolute;
+	// 		top:2rem;
+	// 		width:18.275rem;
+	// 		height:12.3rem;
+	// 		background-color:#FFF;
+	// 		img{
+	// 			position: absolute;
+	// 			width:17.775rem;
+	// 			height:10rem;
+	// 			left:.25rem;
+	// 			top:.25rem;
+	// 		}
+	// 		.photo-like{
+	// 			position:absolute;
+	// 			display:block;
+	// 			left:.9rem;
+	// 			bottom:.5rem;
+	// 			background:url(like.png) 0 0 no-repeat;
+	// 			background-size:.85rem .75rem;
+	// 			padding-left:1rem;
+	// 			color:#919ba5;
+	// 			font-size:.8rem;
+	// 		}
+	// 		.photo-look{
+	// 			position:absolute;
+	// 			display:block;
+	// 			right:1rem;
+	// 			bottom:.5rem;
+	// 			color:#875842;
+	// 			font-size:.9rem;
+	// 		}
+	// 	}
+	// 	#photoItem1{
+	// 		z-index:100;
+	// 		transform:scale(1);
+	// 		-webkit-transfrom:scale(1);
+	// 	}
+	// 	#photoItem2{
+	// 		z-index:99;
+	// 		top:.8rem;
+	// 		transform:scale(0.9);
+	// 		-webkit-transfrom:scale(0.9);
+	// 	}
+	// 	#photoItem3{
+	// 		z-index:98;
+	// 		top:-0.4rem;
+	// 		transform:scale(0.8);
+	// 		-webkit-transfrom:scale(0.8);
+	// 	}
+	// }
+	// .photo-list-high{
+	// 	height:13rem;
+	// }
+	.photo-item {
+		box-sizing: border-box;
+		border-left:5px solid transparent;
+		border-right:5px solid transparent;
+		height: 5.75rem;
 	}
 }

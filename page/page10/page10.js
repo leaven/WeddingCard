@@ -52,4 +52,5 @@ Page10.prototype =$.extend({}, Page.prototype, {
 			}
 		});
 	}
-})
+});
+module.exports = Page10;

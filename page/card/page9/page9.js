@@ -48,6 +48,7 @@ Page9.prototype =$.extend({}, Page.prototype, {
         });
     },
     submitCard: function(event) {
+        event.stopPropagation();
         var me = this;
         $.ajax({
             url : DOMAIN + 'sendWeddingGift',
@@ -57,9 +58,8 @@ Page9.prototype =$.extend({}, Page.prototype, {
                 wx_media_ids: me.photoIds.join(','),
                 msg: me.$el.find('.wish-content').val()
             },
-            jsonpCallback : 'postPhoto',
+            dataType: 'jsonp',
             success : function(data) {
-                event.stopPropagation();
                 var dataSet = $(event.target).data('pageswitch');
                 if(data.code == 0) {
                     alert('提交成功');
@@ -80,3 +80,4 @@ Page9.prototype =$.extend({}, Page.prototype, {
         this.photoIds.splice(index, 1);
     }
 });
+module.exports = Page9;

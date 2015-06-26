@@ -42,4 +42,5 @@ Page7.prototype =$.extend({}, Page.prototype, {
 			}
 		});
 	}
-})
+});
+module.exports = Page7;

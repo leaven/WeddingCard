@@ -22,7 +22,7 @@ var Titles = {
         title: '提交成功'
     },
     page8: {
-        title: '礼物'
+        title: '互动'
     },
     page9: {
         title: '晒礼物'
@@ -30,7 +30,13 @@ var Titles = {
     page10: {
         title: '添加祝福'
     },
-    page11 : {
+    page11: {
         title: '添加祝福'
+    },
+    page12: {
+        title: '礼物'
+    },
+    page13: {
+        title: '添加分类'
     }
 }

@@ -2,7 +2,7 @@ var Page9 = function(el, options) {
 	Page.apply(this, arguments);
 }
 Page9.prototype =$.extend({}, Page.prototype, {
-	$el: $("#page9"),
+	$el: $("#pageAddSort"),
 	$domList : {
 		"confirmBtn" : $(".confirm-btn")
 	},
@@ -33,4 +33,5 @@ Page9.prototype =$.extend({}, Page.prototype, {
 			}
 		});
 	}
-})
+});
+module.exports = Page9;

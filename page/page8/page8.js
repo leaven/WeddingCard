@@ -4,7 +4,6 @@ var Page8 = function(el, options) {
 Page8.prototype =$.extend({}, Page.prototype, {
 	$el: $("#page8"),
 	tpl: __inline('part.tmpl'),
-	photoTpl: __inline('photo.tmpl'),
 	init: function() {
 		this.eventHandler();
 		this.getData();
@@ -32,6 +31,7 @@ Page8.prototype =$.extend({}, Page.prototype, {
 					url: url,
 					dataType: 'jsonp',
 					data : {
+                        userid: window.userid,
 						type_id: type_id,
 						type_name: newValue
 					},
@@ -66,20 +66,19 @@ Page8.prototype =$.extend({}, Page.prototype, {
                         localId: chRes.localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
                         isShowProgressTips: 1, // 默认为1，显示进度提示
                         success: function (upRes) {
-                            $photoList.addClass('photo-list-high');
-							$photoList.append(me.photoTpl({data: {no: i, imgUrl: chRes.localIds[i]}}));
                             var serverId = upRes.serverId; // 返回图片的服务器端ID
                             img.serverIds.push(serverId);
                             $.ajax({
                                 url : DOMAIN + 'updateWeddingPartImg',
                                 method  : 'GET',
                                 data : {
+                                    userid: window.userid,
                                     wx_media_id: serverId,
 									type_id: type_id
                                 },
                                 jsonpCallback : 'postPhoto',
                                 success : function(data) {
-                                    alert(data);
+                                    me.getData();
                                 }
                             });
                             i++;
@@ -104,6 +103,9 @@ Page8.prototype =$.extend({}, Page.prototype, {
 		$.ajax({
 			url: url,
 			dataType: 'jsonp',
+            data: {
+                userid: window.userid
+            },
 			success: function(data) {
 				if(data.code == 0) {
 					me.render(data.data);
@@ -112,6 +114,12 @@ Page8.prototype =$.extend({}, Page.prototype, {
 		});
 	},
 	render: function(data){
-		this.$el.append(this.tpl({data: data}));
+		this.$el.find('.wedding-part').html(this.tpl({data: data}));
+        this.$el.find('.photo-list').owlCarousel({
+            items: 3,
+            itemsMobile: [414,3]
+            // autoPlay: true
+        });
 	}
-})
+});
+module.exports = Page8;

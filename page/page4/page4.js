@@ -19,7 +19,7 @@ Page4.prototype =$.extend({}, Page.prototype, {
         if(data.code == 0) {
           var str = '';
           for(var i = 0, len = data.data.length; i < len; i++) {
-              str += me.photoTpl({data:data.data[i].pic.path});
+              str += me.photoTpl({data:data.data[i].pic});
           }
           me.$picList.append(str);
         }
@@ -77,3 +77,4 @@ Page4.prototype =$.extend({}, Page.prototype, {
 
 	}
 });
+module.exports = Page4;

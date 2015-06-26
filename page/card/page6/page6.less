@@ -5,15 +5,29 @@
         height: 10.65rem;
         margin:1rem auto;
         padding-top: .6rem;
-        background-image: url('edit.png');
+        background: url('edit.png') 0 0 no-repeat;
         background-size:17.75rem 10.65rem;
         div {
-            width: 90%;
             height: 2.1rem;
             margin:0 auto;
             line-height: 2.1rem;
+            overflow: hidden;
             span {
-
+                display: block;
+                float:left;
+                width:32%;
+                height: 2.1rem;
+                overflow: hidden;
+                text-indent: 0.5rem;
+            }
+            input {
+                display: block;
+                float:left;
+                width: 57%;
+                height: 1.5rem;
+                overflow: hidden;
+                line-height: 1.5rem;
+                color: rgb(132,88,66);
             }
         }
     }

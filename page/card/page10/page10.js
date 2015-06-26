@@ -3,7 +3,9 @@ var Page10 = function(el, options) {
 }
 Page10.prototype =$.extend({}, Page.prototype, {
     $el : $("#page10"),
+    userTpl: __inline('userinfo.tmpl'),
     init: function() {
+        this.$el.find('.user-info').html(this.userTpl({userData: userData}));
         this.eventHandler();
     },
     eventHandler: function() {
@@ -33,3 +35,4 @@ Page10.prototype =$.extend({}, Page.prototype, {
         })
     }
 });
+module.exports = Page10;

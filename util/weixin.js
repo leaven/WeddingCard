@@ -1,6 +1,7 @@
 var weixin = {
 	init : function() {
 		this.getToken();
+		this.eventHandler();
 	},
 	getToken : function() {
 		var me = this;
@@ -56,96 +57,49 @@ var weixin = {
 				});
 			}
 		});
+	},
+	initShare: function() {
+		var share_url = 'http://www.wifimeishi.cn/wedding/index.php?page=card&userid='
+						+ window.userid;
+		wx.ready(function() {
+			wx.onMenuShareAppMessage({
+			    title: '婚礼请帖', // 分享标题
+			    desc: '「我们」结婚了！你的一点祝福，是我们最大的幸福~', // 分享描述
+			    link: share_url, // 分享链接
+			    imgUrl: __uri('/static/img/share.png'), // 分享图标
+			    type: '', // 分享类型,music、video或link，不填默认为link
+			    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			    success: function () {
+			        // 用户确认分享后执行的回调函数
+			    },
+			    cancel: function () {
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+			wx.onMenuShareTimeline({
+			    title: '婚礼请帖', // 分享标题
+			    desc:'「我们」结婚了！你的一点祝福，是我们最大的幸福~',
+			    link: share_url, // 分享链接
+			    imgUrl: __uri('/static/img/share.png'), // 分享图标
+			    success: function () {
+			        // 用户确认分享后执行的回调函数
+			    },
+			    cancel: function () {
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+		});
+	},
+	eventHandler: function() {
+		$("body").on("click", '[data-photosrc]', function(event) {
+			var me = this;
+			var src = $(this).data('photosrc');
+			wx.previewImage({
+			    current: src, // 当前显示图片的http链接
+			    urls: [src]
+			});
+		});
 	}
 
 }
 weixin.init();
-wx.ready(function() {
-    var images = {
-        localId: [],
-        serverId: []
-      };
-	$("#checkApi").on("click", function() {
-		 wx.checkJsApi({
-	      jsApiList: [
-	        'chooseImage',
-	        'previewImage',
-			'uploadImage'
-	      ],
-	      success: function (res) {
-	        alert(JSON.stringify(res));
-	      }
-		});
-	});
-    $("#chooseImage").on("click", function() {
-        wx.chooseImage({
-          success: function (res) {
-            images.localId = res.localIds;
-			var str = '';
-			for(var i = 0 , len = res.localIds.length; i < len; i++) {
-				//str += '<img src="'+res.localIds[i]+'" />';
-				$('body').append($('<img src="'+res.localIds[i] + '" />'));
-			}
-//			$(this).after(str)
-            alert('已选择 ' + res.localIds.length + ' 张图片');
-          }
-        });
-    });
-	$("#previewImage").on('click', function() {
-		wx.previewImage({
-	      current: 'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
-	      urls: [
-	        'http://img3.douban.com/view/photo/photo/public/p2152117150.jpg',
-	        'http://img5.douban.com/view/photo/photo/public/p1353993776.jpg',
-	        'http://img3.douban.com/view/photo/photo/public/p2152134700.jpg'
-	      ]
-	    });
-	});
-	$("#uploadImage").on('click', function() {
-		if (images.localId.length == 0) {
-	      alert('请先使用 chooseImage 接口选择图片');
-	      return;
-	    }
-	    var i = 0, length = images.localId.length;
-	    images.serverId = [];
-	    function upload() {
-	      wx.uploadImage({
-	        localId: images.localId[i],
-	        success: function (res) {
-	          i++;
-	          alert('已上传：' + i + '/' + length);
-	          images.serverId.push(res.serverId);
-	          if (i < length) {
-	            upload();
-	          }
-	        },
-	        fail: function (res) {
-	          alert(JSON.stringify(res));
-	        }
-	      });
-	    }
-	    upload();
-	});
-	$("#downloadImage").on('click', function() {
-		if (images.serverId.length === 0) {
-	      alert('请先使用 uploadImage 上传图片');
-	      return;
-	    }
-	    var i = 0, length = images.serverId.length;
-	    images.localId = [];
-	    function download() {
-	      wx.downloadImage({
-	        serverId: images.serverId[i],
-	        success: function (res) {
-	          i++;
-	          alert('已下载：' + i + '/' + length);
-	          images.localId.push(res.localId);
-	          if (i < length) {
-	            download();
-	          }
-	        }
-	      });
-	    }
-	    download();
-		});
-});

@@ -2,9 +2,11 @@ var Page11 = function(el, options) {
     Page.apply(this, arguments);
 }
 Page11.prototype =$.extend({}, Page.prototype, {
-    $el : $("#page11"),
-    voiceTpl : __inline('voice.tmpl'),
+    $el: $("#page11"),
+    voiceTpl: __inline('voice.tmpl'),
+    userTpl: __inline('userinfo.tmpl'),
     init: function() {
+        this.$el.find('.user-info').html(this.userTpl({userData: userData}));
         this.voiceList = this.$el.find('.voice-list');
         this.$guide = this.$el.find('.voice-guide');
         this.$controlBtn = this.$el.find('.control-btn');
@@ -56,10 +58,12 @@ Page11.prototype =$.extend({}, Page.prototype, {
     delVoice: function(event) {
         var $se = $(event.target);
         $se.parent().remove();
-        me.$controlBtn.show();
-        me.$controlSubmit.hide();
+        delete this.localId;
+        this.$controlBtn.show();
+        this.$controlSubmit.hide();
     },
     cancelRecord: function(event) {
+        event.preventDefault();
         this.touchY = event.originalEvent.touches[0].pageY;
         if(this.touchY < this.endY) {
              this.$guide.addClass('voice-guide-cancel');
@@ -101,7 +105,7 @@ Page11.prototype =$.extend({}, Page.prototype, {
             url: url,
             data: {
                 userid: window.userid,
-                wx_media_id: me.$el.find(".voice-play").attr("data-voiceId")
+                wx_media_id: me.voiceId
             },
             dataType: 'jsonp',
             success: function(data) {
@@ -117,3 +121,4 @@ Page11.prototype =$.extend({}, Page.prototype, {
         })
     }
 });
+module.exports = Page11;

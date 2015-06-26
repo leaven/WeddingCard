@@ -90,3 +90,4 @@ Page3.prototype = $.extend({}, Page.prototype, {
         });
     }
 });
+module.exports = Page3;

@@ -87,3 +87,4 @@ Page14.prototype =$.extend({}, Page.prototype, {
     this.$picList.html("");
   }
 });
+module.exports = Page14;

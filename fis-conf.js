@@ -210,17 +210,25 @@ var conf = {
 //                useMap : true
 //            },
             {
-                reg : /^\/static\/js\/main\.js/,
-                isMod : false,
-                useMap : true
+                //前端模板
+                reg: '**.tmpl',
+
+                release: false,
+                useOptimizer:false,
+                useCache: false
             },
             {
                 reg : /^\/static\/(.*)\.js/,
-                isMod : false,
+                isMod : true,
                 useMap : true
             },
             {
-                reg : /^\/widget\/.*js/,
+                reg: /\/page\/page\.js/,
+                isMod: false,
+                useMap: true
+            },
+            {
+                reg : /^\/page\/.*js/,
                 isMod : true,
                 useMap : true
             },
@@ -275,12 +283,20 @@ var conf = {
     },
     // 打包配置
     pack: {
-        "pkg/page.css" : [
-            "/page/**less"
+        "pkg/card.css": [
+            "/page/card/**less"
         ],
-        "pkg/index.js" : [
-            "/widget/**js/",
-            "/static/**js"
+        "pkg/page.css" : [
+            "/page/**/**less"
+        ],
+        "pkg/index.css": [
+            "/**less"
+        ],
+        "pkg/card.js": [
+            "/page/card/**js"
+        ],
+        "pkg/page.js" : [
+            "/page/**/**js"
         ],
         "pkg/lib.js" :[
              "/lib/**js"

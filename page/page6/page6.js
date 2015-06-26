@@ -21,6 +21,7 @@ Page6.prototype =$.extend({}, Page.prototype, {
 		});
 	},
 	render: function(data){
-		this.$el.append(this.tpl({data: data}));
+		this.$el.find('.guest-list').html(this.tpl({data: data}));
 	}
-})
+});
+module.exports = Page6;

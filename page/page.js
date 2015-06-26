@@ -1,5 +1,5 @@
 function Page(el, options) {
-	this.$el = el;
+	this.$el = this.$el || el;
 	var _defaults = {
 		refer : '',
 		title : '',

@@ -25,3 +25,4 @@ Page13.prototype =$.extend({}, Page.prototype, {
         // this.$el.append(this.tpl({data:data}));
     }
 });
+module.exports = Page13;

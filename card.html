@@ -11,6 +11,8 @@
         <link rel="stylesheet" type="text/css" href="/static/css/index.less" />
         <link rel="stylesheet" type="text/css" href="/util/carousel/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="/util/carousel/owl.theme.css">
+        <!--STYLE_PLACEHOLDER-->
+        <script src="/lib/mod.js"></script>
         <script src="/lib/remResize.js"></script>
         <script src="/lib/bower_components/jquery/dist/jquery.js"></script>
         <script src="/util/carousel/owl.carousel.js"></script>
@@ -31,18 +33,36 @@
         <!-- 提交成功       -->
         <link rel="import" href="/page/card/page7/page7.html?__inline" />
         <!--  礼物     -->
-        <link rel="import" href="/page/card/page8/page8.html?__inline" />
+        <link rel="import" href="/page/card/page12/page12.html?__inline" />
         <!--  晒礼物      -->
         <link rel="import" href="/page/card/page9/page9.html?__inline" />
         <!--  文本祝福       -->
         <link rel="import" href="/page/card/page10/page10.html?__inline" />
         <!-- 语音祝福      -->
         <link rel="import" href="/page/card/page11/page11.html?__inline" />
+        <!-- 互动 -->
+        <link rel="import" href="/page/card/page8/page8.html?__inline" />
+         <!--  添加分类      -->
+        <link rel="import" href="/page/card/page13/page13.html?__inline" />
+        <!-- 礼物详情 -->
+        <link rel="import" href="/page/card/page14/page14.html?__inline" />
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
         <script src="/util/weixin.js"></script>
         <script src="/lib/fastclick.js"></script>
+        <script src="/util/query.js"></script>
         <script src="/page/page.js"></script>
-        <script src="/static/js/card.js"></script>
+        <!--SCRIPT_PLACEHOLDER-->
+        <!--RESOURCEMAP_PLACEHOLDER-->
+        <script>
+            require('/static/js/card.js')();
+            // (function() {
+            //     var script = document.createElement("script");
+            //     script.src = "http://192.168.1.111:8081/target/target-script-min.js#anonymous";
+            //     document.body.appendChild(script);
+            // }());
+
+        </script>
+
     </body>
 </html>
